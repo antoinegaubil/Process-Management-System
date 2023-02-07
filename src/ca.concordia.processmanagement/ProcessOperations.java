@@ -39,7 +39,8 @@ private List<processControlBlock> processes = new ArrayList<>();
 private int nextPid = 1;
     @Override
     public int createProcess() throws Exception {
-        processControlBlock process = new processControlBlock(nextPid, "ready");
+        int pid = PIDManager.allocatePid();
+        processControlBlock process = new processControlBlock(pid, "ready");
         processes.add(process);
         return nextPid++;
     }
@@ -48,6 +49,7 @@ private int nextPid = 1;
     public void terminateProcess(int pid) throws Exception {
     for (int i = 0; i < processes.size(); i++){
         if (processes.get(i).getPid() == pid){
+            PIDManager.releasePid(pid);
             processes.remove(i);
             return;
         }
