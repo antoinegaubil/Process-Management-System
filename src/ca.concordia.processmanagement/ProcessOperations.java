@@ -8,31 +8,31 @@ public interface ProcessOperations {
 
 }
 
-class ProcessControlBlock{
-    int pid;
-    String processStatus;
-
-    public ProcessControlBlock(int pid, String processStatus){
-        this.pid = pid;
-        this.processStatus = processStatus;
-    }
-
-    public int getPid(){
-        return pid;
-    }
-
-    public void setPid(int pid){
-        this.pid = pid;
-    }
-
-    public String getProcessStatus(){
-        return processStatus;
-    }
-
-    public void setProcessStatus(String processStatus) {
-        this.processStatus = processStatus;
-    }
-}
+//class ProcessControlBlock{
+//    int pid;
+//    String processStatus;
+//
+//    public ProcessControlBlock(int pid, String processStatus){
+//        this.pid = pid;
+//        this.processStatus = processStatus;
+//    }
+//
+//    public int getPid(){
+//        return pid;
+//    }
+//
+//    public void setPid(int pid){
+//        this.pid = pid;
+//    }
+//
+//    public String getProcessStatus(){
+//        return processStatus;
+//    }
+//
+//    public void setProcessStatus(String processStatus) {
+//        this.processStatus = processStatus;
+//    }
+//}
 
 class ProcessManager implements ProcessOperations{
 private List<processControlBlock> processes = new ArrayList<>();
@@ -42,7 +42,7 @@ private int nextPid = 1;
         int pid = PIDManager.allocatePid();
         processControlBlock process = new processControlBlock(pid, "ready");
         processes.add(process);
-        return nextPid++;
+        return pid;
     }
 
     @Override

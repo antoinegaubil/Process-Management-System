@@ -5,38 +5,40 @@ import java.io.InputStreamReader;
 
 public class Main {
     
-    static void FirstScenario(){
-        
+    static void FirstScenario() throws Exception {
+        ProcessOperations x = new ProcessManager();
         PIDManager.allocateMap();
-        ProcessManager.createProcess();
-        ProcessManager.terminateProcess(300);
+        x.createProcess();
+        x.terminateProcess(300);
     
     }
     
-     static void SecondScenario(){
-          
-        PIDManager.allocateMap();
+     static void SecondScenario() throws Exception {
+         ProcessOperations x = new ProcessManager();
+
+         PIDManager.allocateMap();
          
-        for (int i = 0; i < 500; i++) {
-          ProcessManager.createProcess();
+        for (int i = 0; i < 200; i++) {
+          x.createProcess();
         }
-          ProcessManager.createProcess();
+          x.createProcess();
     }
     
-     static void ThirdScenario(){
+     static void ThirdScenario() throws Exception {
+         ProcessOperations x = new ProcessManager();
+
+         PIDManager.allocateMap();
          
-          PIDManager.allocateMap();
-         
-         for (int i = 0; i < 500; i++) {
-          ProcessManager.createProcess();
+         for (int i = 0; i < 200; i++) {
+          x.createProcess();
         }
          
-          ProcessManager.terminateProcess(i);
-          ProcessManager.createProcess();
-          ProcessManager.createProcess();
+          x.terminateProcess(499);
+          x.createProcess();
+          x.createProcess();
          
-          for (int i = 500; i > 0; i--) {
-          ProcessManager.terminateProcess(i);
+          for (int i = 499; i > 299; i--) {
+          x.terminateProcess(i);
         }
     
     }
@@ -44,10 +46,10 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        
-       FirstScenario();
-       //SecondScenrio();
-       //ThirdScenario();
+        ProcessOperations x = new ProcessManager();
+       //FirstScenario();
+       //SecondScenario();
+       ThirdScenario();
 
     }
 
