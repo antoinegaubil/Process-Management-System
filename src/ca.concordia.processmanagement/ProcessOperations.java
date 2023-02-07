@@ -36,7 +36,7 @@ public interface ProcessOperations {
 
 class ProcessManager implements ProcessOperations{
 private List<processControlBlock> processes = new ArrayList<>();
-private int nextPid = 1;
+
     @Override
     public int createProcess() throws Exception {
         int pid = PIDManager.allocatePid();

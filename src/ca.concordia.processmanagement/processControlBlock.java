@@ -5,8 +5,9 @@ class processControlBlock {
     String processStatus;
 
     public processControlBlock(int pid, String processStatus){
+        setProcessStatus(processStatus);
         this.pid = pid;
-        this.processStatus = processStatus;
+        this.processStatus = getProcessStatus();
     }
 
     public int getPid(){
@@ -17,8 +18,10 @@ class processControlBlock {
     }
 
     public String getProcessStatus(){
+        System.out.println(processStatus);
         return processStatus;
     }
+
     public void setProcessStatus(String processStatus){
         this.processStatus = processStatus;
     }
