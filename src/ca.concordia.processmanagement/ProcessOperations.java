@@ -3,36 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 public interface ProcessOperations {
     int createProcess() throws Exception;
+
     void terminateProcess(int pid) throws Exception;
-
-
 }
-
-//class ProcessControlBlock{
-//    int pid;
-//    String processStatus;
-//
-//    public ProcessControlBlock(int pid, String processStatus){
-//        this.pid = pid;
-//        this.processStatus = processStatus;
-//    }
-//
-//    public int getPid(){
-//        return pid;
-//    }
-//
-//    public void setPid(int pid){
-//        this.pid = pid;
-//    }
-//
-//    public String getProcessStatus(){
-//        return processStatus;
-//    }
-//
-//    public void setProcessStatus(String processStatus) {
-//        this.processStatus = processStatus;
-//    }
-//}
 
 class ProcessManager implements ProcessOperations{
 private List<processControlBlock> processes = new ArrayList<>();

@@ -6,11 +6,14 @@ class processControlBlock {
 
     public processControlBlock(int pid, String processStatus){
         setProcessStatus(processStatus);
-        this.pid = pid;
-        this.processStatus = getProcessStatus();
+        setPid(pid);
+        getProcessStatus();
+        getPid();
     }
 
     public int getPid(){
+
+        System.out.println(pid);
         return pid;
     }
     public void setPid(int pid){
