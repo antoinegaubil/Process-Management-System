@@ -1,67 +1,69 @@
 package ca.concordia.processmanagement;
 
-import java.io.IOException;
 
-class PIDManager {
+class Pid_manager {
+	static final int MIN_PID = 300;
+	static final int MAX_PID = 500;
+	private int pid_arraylist[];
+	boolean available ;
+	int i;
+	
+	
+ 
 
-    static final int MIN_PID = 300;
-    static final int MAX_PID = 500;
+int allocateMap()throws Exception {
+	try {
+        for (i = MIN_PID; i <= MAX_PID; i++) {
+            pid_arraylist[i] = MIN_PID;
+            System.out.println("Memory allocated successfully");
+        }
+	}
+	catch  (Exception e ) 
+	if ( pid_arraylist == null) {
+		system.out.println( "unsuccessful");
+		}
+   return 0 ;
+}
 
-    private static int[] pidArray;
 
-    PIDManager() throws IOException {
-    }
+int allocatePid()throws Exception {
 
-    static void allocateMap()throws Exception{
-        pidArray = new int[MAX_PID - MIN_PID];
-    if (pidArray == null) {
-        System.out.println("Unsuccessful");
-    }
-    for (int i = 0; i < pidArray.length; i++){
-        pidArray[i] = 0;
-    }
-    System.out.println("Success");
-    }
+	int j =0;
+	try {
+	for (i=0;i <pid_arraylist.length ;i++)
+	         if (pid_arraylist[i]== 0) {
+	        	 available= true;
+	        	 pid_arraylist[i] = 1; 
+	        	 j  = j  + MIN_PID; 
+	        	
+	         }
+	         else 
+	        	 return pid_arraylist[i] ; 
+	}
+    catch (Exception e )
+	  if (pid_arraylist[i]== 1)
+		  System.out.println("pid arnt  available ");
+}
 
-    static int allocatePid()throws Exception{
-        if (pidArray == null) {
+static void releasePid(int pid){
+    if (pid_arraylist == null){
         System.out.println("PID manager not initialized");
-        return -1;
-        }
-        int pidNum = -1;
-        for (int i = 0; i < pidArray.length; i++){
-            if (pidArray[i] == 0){
-                pidArray[i] = 1;
-                pidNum = i + MIN_PID;
-                break;
-            }
-        }
-        if (pidNum == -1){
-            System.out.println("Unable to allocate PID");
-            return -1;
-        }
-        System.out.println("Allocate PID :" + pidNum);
-        return pidNum;
-        }
-
-        static void releasePid(int pid){
-        if (pidArray == null){
-            System.out.println("PID manager not initialized");
-            return;
-        }
-        if (pid < MIN_PID || pid > MAX_PID){
-            System.out.println("Given PID is out of range");
-        }
-
-        int newPid = pid - MIN_PID;
-        if (pidArray[newPid] == 0){
-            System.out.println("PID " + pid + "is already released");
-            return;
-        }
-        System.out.println("Releasing PID :" + pid);
-        pidArray[newPid] = 0;
-        }
-
-
+        return;
+    }
+    if (pid < MIN_PID || pid > MAX_PID){
+        System.out.println("Given PID is out of range");
     }
 
+    int newPid = pid - MIN_PID;
+    if (pid_arraylist[newPid] == 0){
+        System.out.println("PID " + pid + "is already released");
+        return;
+    }
+    System.out.println("Releasing PID :" + pid);
+    pid_arraylist[newPid] = 0;
+    }
+
+
+}
+	
+   
